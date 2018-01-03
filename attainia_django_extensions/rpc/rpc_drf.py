@@ -105,10 +105,11 @@ class RpcDrfMixin(object):
         queryset = self.get_queryset()
         page_num = kwargs.pop("page", 1)
         page_size = kwargs.pop("page_size", settings.DYNAMIC_REST["PAGE_SIZE"])
+        fields = kwargs.pop("fields", "").split(",")
 
         page = self.paginate_queryset(queryset, page_num, page_size)
         if page is not None:
-            serializer = self.get_serializer(page, many=True, *args, **kwargs)
+            serializer = self.get_serializer(page, many=True, only_fields=fields, *args, **kwargs)
             return self.get_paginated_response(serializer.data)
 
         serializer = self.get_serializer(queryset, many=True, *args, **kwargs)
