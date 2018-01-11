@@ -18,7 +18,7 @@ URL = "https://github.com/Attainia/attainia-django-extensions"
 EMAIL = "developers@attainia.com"
 AUTHOR = "Attainia"
 
-REQUIRED = ["django", "djangorestframework", "cid", "django_nameko", ]
+REQUIRED = ["Django>=1.11,<1.12", "djangorestframework>=3.6,<3.7", "django-cid==0.2.0", "django_nameko", ]
 
 here = os.path.abspath(os.path.dirname(__file__))
 
